@@ -32,19 +32,5 @@ pipeline {
 		export BUILD=$BUILD_NUMBER
 		sh './containerize.sh'
     }
-    post {
-        always {
-            echo 'Jenkins has finished the job'
-            deleteDir() /* clean up our workspace */
-        }
-        success {
-            slackSend channel: '#openshift-on-aws',
-                  color: 'good',
-                  message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
-        }
-        failure {
-            slackSend channel: '#openshift-on-aws',
-                  color: 'bad',
-                  message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."'
-        }
+  
 }
