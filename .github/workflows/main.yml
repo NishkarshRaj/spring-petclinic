@@ -9,4 +9,4 @@ jobs:
       - uses: actions/checkout@v2
       - name: docker build
         run: |
-          docker build ./target/*.jar -t 
+          docker build . -t v1
